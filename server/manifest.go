@@ -4,6 +4,6 @@ var manifest = struct {
 	Id      string
 	Version string
 }{
-	Id:      "com.mattermost.sample-plugin",
+	Id:      "com.gohabitate.gurgle-plugin",
 	Version: "0.0.1",
 }

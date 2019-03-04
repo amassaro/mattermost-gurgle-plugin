@@ -1,7 +1,7 @@
 {
-    "id": "com.mattermost.sample-plugin",
-    "name": "Sample Plugin",
-    "description": "This plugin serves as a starting point for writing a Mattermost plugin.",
+    "id": "com.gohabitate.gurgle-plugin",
+    "name": "Gurgle Plugin",
+    "description": "gurgle plugin",
     "version": "0.0.1",
     "server": {
         "executables": {
@@ -16,6 +16,19 @@
     "settings_schema": {
         "header": "",
         "footer": "",
-        "settings": []
+        "settings": [
+            {
+                "key": "TeamName",
+                "display_name": "Team Name 1",
+                "type": "text",
+                "help_text": "The Team Name"
+            },
+            {
+                "key": "ChannelName",
+                "display_name": "Channel Name 1",
+                "type": "text",
+                "help_text": "The Channel Name"
+            }
+        ]
     }
 }

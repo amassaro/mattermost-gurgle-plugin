@@ -1,42 +1,52 @@
 var path = require('path');
 
-module.exports = {
-    entry: [
-        './src/index.js',
-    ],
-    resolve: {
-        modules: [
-            'src',
-            'node_modules',
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+module.exports = [
+    {
+        entry: [
+            './src/index.js',
         ],
-        extensions: ['*', '.js', '.jsx'],
-    },
-    module: {
-        rules: [
-            {
-                test: /\.(js|jsx)$/,
-                exclude: /node_modules/,
-                use: {
-                    loader: 'babel-loader',
-                    options: {
-                        presets: ['env', 'react'],
-                        plugins: [
-                            'transform-class-properties',
-                            'transform-object-rest-spread',
-                        ],
+        resolve: {
+            modules: [
+                'src',
+                'node_modules',
+            ],
+            extensions: ['*', '.js', '.jsx'],
+        },
+        module: {
+            rules: [
+                {
+                    test: /\.(js|jsx)$/,
+                    exclude: /node_modules/,
+                    use: {
+                        loader: 'babel-loader',
+                        options: {
+                            presets: ['env', 'react'],
+                            plugins: [
+                                'transform-class-properties',
+                                'transform-object-rest-spread',
+                            ],
+                        },
                     },
                 },
-            },
+            ],
+        },
+        plugins: [
+            new HtmlWebpackPlugin({
+                name: 'Gurgle Plugin Settings',
+                template: 'src/index.html',
+            }),
         ],
+        externals: {
+            react: 'React',
+            redux: 'Redux',
+            'react-redux': 'ReactRedux',
+        },
+        output: {
+            path: path.join(__dirname, '/dist'),
+            publicPath: '/',
+            filename: 'main.js',
+        },
     },
-    externals: {
-        react: 'React',
-        redux: 'Redux',
-        'react-redux': 'ReactRedux',
-    },
-    output: {
-        path: path.join(__dirname, '/dist'),
-        publicPath: '/',
-        filename: 'main.js',
-    },
-};
+];
